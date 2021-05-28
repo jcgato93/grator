@@ -2,7 +2,7 @@
 const { default: chalk } = require('chalk');
 const yargs = require('yargs');
 const { createMigration } = require('../src/create');
-const { rollbackMigration } = require('../src/rollback');
+const { undoMigration } = require('../src/undo');
 const { runMigrations } = require('../src/run');
 
 
@@ -28,5 +28,5 @@ if ('create' in options) {
 
 if ('undo' in options) {
     chalk.green('Undoing');
-    rollbackMigration();
+    undoMigration();
 }
