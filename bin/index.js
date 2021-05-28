@@ -8,7 +8,7 @@ const { runMigrations } = require('../src/run');
 
 
 const options = yargs
- .usage("Usage: -n <name>")
+ .usage("Usage: -c <migraiton name>")
  .option("r", { alias: "run", describe: "Run migrations", type: "string", demandOption: false })
  .option("c", { alias: "create", describe: "Create new migration fiel", type: "string", demandOption: false })
  .option("u", { alias: "undo", describe: "undo last migration", type: "string", demandOption: false })
@@ -20,12 +20,13 @@ if ('run' in options) {
     runMigrations();
 }
 
-if (options.create) {
+if ('create' in options) {
+    if (options.create === '') throw new Error(chalk.red('Migration name is required'));
     console.log(chalk.green('Creating migration file...'));
     createMigration(options.create);
 }
 
 if ('undo' in options) {
-    chalk.green('Rolling back');
+    chalk.green('Undoing');
     rollbackMigration();
 }
