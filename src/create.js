@@ -17,30 +17,18 @@ exports.createMigration = (migrationDescription) => {
     const fileName =  `migrations/${time}_${migrationDescription}.js`;
 
     // file content
-    const content = `const grator = require('grator');
-const DB_NAME= 'database_name';
-
-
-// UP
-exports.up = () => {
-    const mongo = grator.MongoLib(DB_NAME);
-    mongo.connect().then(db => {
-        return db
-            .collection('collection')
-            .find(query)
-            .toArray();
-    });
+    const content = `
+exports.up = db => {
+    db.collection('collection')
+    .find(query)
+    .toArray();
 }
 
-// DOWN
-exports.down = () => {
-    const mongo = grator.MongoLib(DB_NAME);
-    mongo.connect().then(db => {
-        return db
-            .collection('collection')
-            .find(query)
-            .toArray();
-    });
+
+exports.down = db => {
+    db.collection('collection')
+    .find(query)
+    .toArray();
 };
     `
 
