@@ -1,14 +1,18 @@
 {
-  "name": "grator",
+  "name": "@reaperx/grator",
   "version": "1.0.0",
-  "description": "",
+  "description": "A small CLI tool to build and run mongodb migrations",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jcgato93/grator"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bin": {
     "grator": "./bin/index.js"
   },
