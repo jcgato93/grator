@@ -1,6 +1,6 @@
 {
   "name": "@reaperx/grator",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A small CLI tool to build and run mongodb migrations",
   "main": "index.js",
   "scripts": {
