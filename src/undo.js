@@ -6,7 +6,7 @@ const fs = require('fs');
 const { default: chalk } = require('chalk');
 const MongoLib = require('../lib/mongo');
 
-const getMigrationToExecute = async (mongoClient) => {
+const getMigrationToExecute = async mongoClient => {
   try {
     let migrationsExecuted = await mongoClient.collection('migrations').find().toArray();
 

@@ -28,7 +28,7 @@ MONGO_DB_NAME=
 
 ## Examples
 
-Into migration file we hace an instance of the database, this use https://www.npmjs.com/package/mongodb
+Into migration file we have an instance of the database, this use https://www.npmjs.com/package/mongodb
 
 ```javascript
 exports.up = async db => {
