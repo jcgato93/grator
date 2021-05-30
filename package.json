@@ -1,11 +1,11 @@
 {
   "name": "@reaperx/grator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A small CLI tool to build and run mongodb migrations",
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./",
-    "lint-fix": "eslint ./ --fix",    
+    "lint-fix": "eslint ./ --fix",
     "test": "echo \"No test specified\""
   },
   "repository": {
