@@ -1,6 +1,4 @@
 # grator
-
-
 ## Install
 ---
     $ npm install @reaperx/grator

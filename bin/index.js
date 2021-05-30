@@ -1,32 +1,29 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
 const { default: chalk } = require('chalk');
 const yargs = require('yargs');
 const { createMigration } = require('../src/create');
 const { undoMigration } = require('../src/undo');
 const { runMigrations } = require('../src/run');
 
-
-
 const options = yargs
- .usage("Usage: -c <migraiton name>")
- .option("r", { alias: "run", describe: "Run migrations", type: "string", demandOption: false })
- .option("c", { alias: "create", describe: "Create new migration fiel", type: "string", demandOption: false })
- .option("u", { alias: "undo", describe: "undo last migration", type: "string", demandOption: false })
- .argv;
+  .usage('Usage: -c <migraiton name>')
+  .option('r', { alias: 'run', describe: 'Run migrations', type: 'string', demandOption: false })
+  .option('c', { alias: 'create', describe: 'Create new migration fiel', type: 'string', demandOption: false })
+  .option('u', { alias: 'undo', describe: 'undo last migration', type: 'string', demandOption: false }).argv;
 
-console.log(options);
 if ('run' in options) {
-    console.log(chalk.green('Running migrations...'));
-    runMigrations();
+  console.log(chalk.green('Running migrations...'));
+  runMigrations();
 }
 
 if ('create' in options) {
-    if (options.create === '') throw new Error(chalk.red('Migration name is required'));
-    console.log(chalk.green('Creating migration file...'));
-    createMigration(options.create);
+  if (options.create === '') throw new Error(chalk.red('Migration name is required'));
+  console.log(chalk.green('Creating migration file...'));
+  createMigration(options.create);
 }
 
 if ('undo' in options) {
-    chalk.green('Undoing');
-    undoMigration();
+  chalk.green('Undoing');
+  undoMigration();
 }
