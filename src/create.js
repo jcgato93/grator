@@ -19,17 +19,15 @@ exports.createMigration = migrationDescription => {
 
   // file content
   const content = `
-exports.up = db => {
-    db.collection('collection')
-    .find(query)
-    .toArray();
-}
+exports.up = async db => {
+  await db.collection('collection')
+    .insertOne({ field: 'value'});
+};
 
 
-exports.down = db => {
-    db.collection('collection')
-    .find(query)
-    .toArray();
+exports.down = async db => {
+  await db.collection('collection')
+    .deleteMany();
 };
     `;
 
