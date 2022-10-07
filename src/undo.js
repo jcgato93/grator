@@ -12,7 +12,7 @@ const getMigrationToExecute = async mongoClient => {
 
     migrationsExecuted = migrationsExecuted
                           .map(migration => migration.id)
-                          .sort((m1, m2) => m2 - m1);
+                          .sort((m1, m2) => m1 - m2);
 
     if (migrationsExecuted.length === 0) return 0;    
 

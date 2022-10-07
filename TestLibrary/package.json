@@ -1,0 +1,17 @@
+{
+  "name": "testlibrary",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrations-run": "grator -r",
+    "migrations-create": "grator -c",
+    "migrations-undo": "grator -u"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@reaperx/grator": "file:.."
+  }
+}
