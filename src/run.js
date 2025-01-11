@@ -71,18 +71,18 @@ exports.runMigrations = () => {
     }
 
     // run
-    const promises = migrationsToExecute.map(async migration => {
-      // find the file
+    for (let index = 0; index < migrationsToExecute.length; index++) {
+      const migration = migrationsToExecute[index];
       const file = files.find(x => x.includes(`${migration}_`));
-      await runMigration(file, mongoClient, migration);
-    });
-
-    Promise.all(promises)
-      .then(() => {
-        console.log(chalk.green('All migrations were successfull!!!'));
-      })
-      .finally(async () => {
+      try {
+        await runMigration(file, mongoClient, migration);
+      } catch (e) {
         await mongoInstance.client.close(true);
-      });
+        console.log(chalk.red(e));
+      }
+    }
+
+    console.log(chalk.green('All migrations were successfull!!!'));
+    await mongoInstance.client.close(true);
   });
 };
