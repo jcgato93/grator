@@ -69,12 +69,14 @@ exports.undoMigration = () => {
       await undoMigration(file, mongoClient, migration);
     });
 
-    Promise.all(promises)
-      .then(() => {        
-        console.log(chalk.green('Last migration was undo'));
-      })
-      .finally(async () => {
-        await mongoInstance.client.close(true);
-      });
+    for (let index = 0; index < migrationToExecute.length; index++) {
+      const element = migrationToExecute[index];
+
+      const file = files.find(x => x.includes(`${migration}_`));
+      await undoMigration(file, mongoClient, migration);
+    }
+
+    console.log(chalk.green('Last migration was undo'));
+    await mongoInstance.client.close(true);
   });
 };
